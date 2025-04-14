@@ -1,38 +1,50 @@
-# sv
+# SvelteKit Auth Starter (Lucia + Prisma + MySQL)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This project is a starter template for authentication using **SvelteKit**, **Lucia**, **Prisma**, and **MySQL**.
 
-## Creating a project
+## 📦 Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- [SvelteKit](https://kit.svelte.dev) – Fullstack frontend framework
+- [Lucia](https://lucia-auth.com) – Simple and secure authentication
+- [Prisma](https://www.prisma.io) – Type-safe ORM for SQL databases
+- [MySQL](https://www.mysql.com) – Local relational database
+---
 
+## ⚙️ Setup Instructions
+
+### 1. Clone this repo
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+git clone https://github.com/your-username/svelte-auth-starter.git
+cd svelte-auth-starter
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+### 2. Install dependencies
 ```bash
-npm run dev
+npm install
+```
 
-# or start the server and open the app in a new browser tab
+### 3. .env Configuration
+Create a .env file in the root:
+```.env
+DATABASE_URL="mysql://root:password@localhost:3306/svelte_auth"
+```
+Make sure:
+- You have MySQL running on localhost:3306
+- The user/password match the DB
+- The user has permission to create a new database if it doesn't exist
+
+### 4. Initialize Prisma
+Run the following command to apply schema and generate the Prisma client:
+```bash
+npx prisma migrate dev --name init
+npx prisma generate
+```
+This will automatically create the svelte_auth database (if it doesn't already exist) and apply the schema.
+
+If you're connecting to an existing database with tables:
+```bash
+npx prisma db pull
+```
+
+### 5. Start the Dev Server
 npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

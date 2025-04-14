@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model User {
+  id       String   @id @default(cuid())
+  email    String   @unique
+  role     Role     @default(USER)
+  key      Key[]    // 유저 인증 수단 (email/password, OAuth 등)
+  session  Session[] // 유저 세션
+}
+
+model Key {
+  id              String   @id // 로그인 ID (ex: "email:abc@ex.com", "google:1234567890")
+  hashed_password String?      // 비밀번호 로그인일 경우만 사용
+
+  user_id String
+  user    User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+model Session {
+  id             String   @id @default(cuid())
+  user_id        String
+  user           User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  active_expires BigInt
+  idle_expires   BigInt
+
+  @@index([user_id])
+}
