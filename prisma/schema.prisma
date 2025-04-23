@@ -13,14 +13,16 @@ enum Role {
 }
 
 model User {
-  id       String   @id @default(cuid())
-  email    String   @unique
-  role     Role     @default(USER)
-  key      Key[]    // 유저 인증 수단 (email/password, OAuth 등)
-  session  Session[] // 유저 세션
+  id        String     @id @default(cuid())
+  username  String     @unique
+  email     String     @unique
+  role      Role       @default(USER)
+
+  authKeys  AuthKey[]
+  sessions  Session[]
 }
 
-model Key {
+model AuthKey {
   id              String   @id // 로그인 ID (ex: "email:abc@ex.com", "google:1234567890")
   hashed_password String?      // 비밀번호 로그인일 경우만 사용
 
@@ -32,11 +34,9 @@ model Key {
 
 model Session {
   id             String   @id @default(cuid())
-  user_id        String
-  user           User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt      DateTime
 
-  active_expires BigInt
-  idle_expires   BigInt
-
-  @@index([user_id])
+  @@index([userId])
 }

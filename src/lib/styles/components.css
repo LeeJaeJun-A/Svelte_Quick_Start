@@ -1,0 +1,22 @@
+.input-basic {
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 8px;
+
+    /* 스타일 */
+    background: #FFFFFF;
+    border: 1px solid #EBEDEF; /* Line */
+    border-radius: 8px;
+
+    /* 레이아웃 속성 */
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+
+    font-size: 14px;
+  }

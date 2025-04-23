@@ -1,0 +1,69 @@
+/* typography.css */
+
+/* 전체 기본 폰트 설정 */
+html, body {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    color: #1A1A1A;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+
+  /* Headline styles */
+  h1 {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+
+  /* Subtitle styles (사용자 정의 클래스 또는 확장해서 사용) */
+  .subtitle-1 {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 600;
+  }
+
+  .subtitle-2 {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 600;
+  }
+
+  /* Body text */
+  body, p {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
+  /* Paragraph (별도 클래스 필요 시) */
+  .paragraph {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
+  /* Caption styles */
+  .caption {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+  }
+
+  .caption-2 {
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: 500;
+  }

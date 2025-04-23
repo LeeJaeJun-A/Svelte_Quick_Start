@@ -1,26 +1,33 @@
-import { Lucia } from "lucia";
+import { Lucia, TimeSpan } from "lucia";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { prismaClient } from "./prisma";
 
-const adapter = new PrismaAdapter(prismaClient.session, prismaClient.user);
+const adapter = new PrismaAdapter(
+  prismaClient.session,
+  prismaClient.user
+);
 
 export const auth = new Lucia(adapter, {
+  sessionExpiresIn: new TimeSpan(6, "h"),
+
   sessionCookie: {
     attributes: {
-      secure: false
+      secure: false // 배포 시 true
     }
   },
+
   getUserAttributes: (user) => ({
-    email: user.email,
-    role: user.role
+    username: user.username,
+    role: user.role as "ADMIN" | "USER"
   })
 });
 
+// 타입 확장
 declare module "lucia" {
   interface Register {
     Auth: typeof auth;
     DatabaseUserAttributes: {
-      email: string;
+      username: string;
       role: "ADMIN" | "USER";
     };
   }

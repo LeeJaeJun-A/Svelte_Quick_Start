@@ -1,0 +1,115 @@
+/* Blue */
+.color-blue-50 {
+	background-color: #e9f3fc;
+}
+.color-blue-200 {
+	background-color: #c4e1fe;
+}
+.color-blue-300 {
+	background-color: #7aa8e6;
+}
+.color-blue-400 {
+	background-color: #6191e3;
+}
+.color-blue-500 {
+	background-color: #3f87d9;
+}
+.color-blue-600 {
+	background-color: #3a6dc5;
+}
+.color-blue-700 {
+	background-color: #28559a;
+}
+.color-blue-800 {
+	background-color: #1f4277;
+}
+.color-blue-900 {
+	background-color: #18325b;
+}
+
+/* Issue Type */
+.color-vul {
+	background-color: #f75309;
+}
+.color-vul-alpha04 {
+	background-color: rgba(247, 83, 9, 0.04);
+}
+.color-bad {
+	background-color: #e79c51;
+}
+.color-bad-alpha04 {
+	background-color: rgba(231, 156, 81, 0.04);
+}
+.color-try {
+	background-color: #3baddd;
+}
+.color-try-alpha04 {
+	background-color: rgba(59, 173, 221, 0.04);
+}
+.color-attack {
+	background-color: #7a86ea;
+}
+.color-attack-alpha06 {
+	background-color: rgba(122, 134, 234, 0.06);
+}
+
+/* Alpha (black) */
+.alpha-10 {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+.alpha-30 {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+.alpha-40 {
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Line, White, Background */
+.line {
+	border: 1px solid #ebedf0;
+}
+.white {
+	background-color: #ffffff;
+}
+.bg-main {
+	background-color: #f5f7f9;
+}
+
+/* Text */
+.text-black {
+	color: #4c4c4c;
+}
+.text-gray {
+	color: #9aa3b5;
+}
+.text-gray-alpha50 {
+	color: rgba(154, 163, 181, 0.5);
+}
+.text-disabled {
+	color: #d0d0d0;
+}
+
+/* Dot */
+.red-dot {
+	background-color: #eb4040;
+}
+
+/* Chip colors */
+.chip-red {
+	background-color: #f15835;
+}
+.chip-red-alpha10 {
+	background-color: rgba(241, 83, 53, 0.1);
+}
+.chip-green {
+	background-color: #3a9968;
+}
+.chip-green-alpha10 {
+	background-color: rgba(58, 153, 104, 0.1);
+}
+.chip-yellow {
+	background-color: #ffab43;
+}
+.chip-yellow-alpha10 {
+	background-color: rgba(255, 171, 67, 0.1);
+}
