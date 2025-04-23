@@ -1,13 +1,18 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { getStores } from '$app/stores';
 	import type { User } from 'lucia';
-	import { page } from '$app/state';
 
 	export let user: User | null;
 
-	const currentPath = page.url.pathname;
+	const { page } = getStores();
+	let currentPath = '/';
 
-  const links = [
+	page.subscribe((p) => {
+		currentPath = p.url.pathname;
+	});
+
+	const links = [
 		{ href: '/', label: '홈' },
 		{ href: '/1', label: '1' },
 		{ href: '/2', label: '2' },
@@ -16,6 +21,7 @@
 
 	const goHome = () => goto('/');
 	const goLogin = () => goto('/login');
+	const logout = () => goto('/logout');
 </script>
 
 <nav class="flex h-14 w-full items-center justify-between border-b border-gray-200 bg-white px-6">
@@ -31,22 +37,22 @@
 		<ul class="flex space-x-4 text-sm font-medium">
 			{#each links as { href, label }}
 				<li>
-					<a
-						{href}
-						class="hover:text-black {currentPath === href
-							? 'font-bold text-black'
-							: 'text-gray-400'}"
+					<button
+						on:click={() => goto(href)}
+						class={currentPath === href
+							? 'font-bold text-black hover:text-black'
+							: 'text-gray-400 hover:text-black'}
 					>
 						{label}
-					</a>
+					</button>
 				</li>
 			{/each}
 		</ul>
 	</div>
-	<div class="flex items-center space-x-3">
+	<div class="flex items-center space-x-2">
 		{#if user}
 			<!-- 로그인 상태 -->
-			<div class="flex items-center space-x-1.5">
+			<div class="flex items-center space-x-1.5 pr-1">
 				<div class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
 					<!-- 사용자 아이콘 -->
 					<svg
@@ -65,44 +71,28 @@
 						/>
 					</svg>
 				</div>
-				<!-- 실제 사용자 이름 -->
 				<span class="text-sm text-gray-700">{user.username}</span>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-4 w-4 text-gray-400"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M19 9l-7 7-7-7"
-					/>
-				</svg>
 			</div>
-			<!-- 알림 버튼 -->
 			<button
+				on:click|preventDefault={logout}
 				class="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200"
-				aria-label="알림"
+				aria-label="로그아웃"
 			>
 				<svg
-					xmlns="http://www.w3.org/2000/svg"
 					class="h-4 w-4 text-gray-400"
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
 					fill="none"
 					viewBox="0 0 24 24"
-					stroke="currentColor"
 				>
 					<path
+						stroke="currentColor"
 						stroke-linecap="round"
 						stroke-linejoin="round"
 						stroke-width="2"
-						d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11
-               a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341
-               C7.67 6.165 6 8.388 6 11v3.159
-               c0 .538-.214 1.055-.595 1.436L4 17h5
-               m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+						d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"
 					/>
 				</svg>
 			</button>
@@ -112,7 +102,7 @@
 				on:click={goLogin}
 				class="rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700"
 			>
-				로그인 필요
+				로그인
 			</button>
 		{/if}
 	</div>
