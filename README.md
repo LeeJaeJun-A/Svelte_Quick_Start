@@ -47,4 +47,6 @@ npx prisma db pull
 ```
 
 ### 5. Start the Dev Server
+```bash
 npm run dev -- --open
+```

@@ -41,7 +41,7 @@
 
 		<form method="POST" on:submit|preventDefault={handleSubmit} class="space-y-4">
 			<!-- 아이디 -->
-			<div class="mb-6">
+			<div class="mb-3">
 				<label for="username" class="mb-1 block text-sm font-medium text-gray-900">아이디</label>
 				<input
 					id="username"
