@@ -8,11 +8,8 @@ import { auth }        from "$lib/server/auth";
  */
 const sessionHandler: Handle = async ({ event, resolve }) => {
   // 1) 세션 쿠키에서 세션 ID 가져오기
-  console.log("cookie names available:", event.cookies.getAll().map(c => c.name));
-  console.log("auth.sessionCookieName:", auth.sessionCookieName);
-
   const sessionId = event.cookies.get(auth.sessionCookieName);
-  console.log("sessionId", sessionId);
+
   if (!sessionId) {
     event.locals.user    = null;
     event.locals.session = null;
@@ -21,9 +18,6 @@ const sessionHandler: Handle = async ({ event, resolve }) => {
 
   // 2) 세션 유효성 검사
   const { session, user } = await auth.validateSession(sessionId);
-
-  console.log("session", session);
-  console.log("user", user);
 
   if (!session) {
     const blank = auth.createBlankSessionCookie();

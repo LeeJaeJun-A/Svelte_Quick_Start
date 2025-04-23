@@ -22,13 +22,3 @@ export const auth = new Lucia(adapter, {
   })
 });
 
-// 타입 확장
-declare module "lucia" {
-  interface Register {
-    Auth: typeof auth;
-    DatabaseUserAttributes: {
-      username: string;
-      role: "ADMIN" | "USER";
-    };
-  }
-}
