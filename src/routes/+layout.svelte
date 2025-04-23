@@ -17,7 +17,7 @@
 
 <div class="flex flex-col h-screen">
 	<NavBar />
-	<main class="flex-1 overflow-y-auto">
+	<main class="flex-1 overflow-y-auto h-full min-h-[calc(100vh-56px)]">
 		{@render children()}
 	</main>
 </div>

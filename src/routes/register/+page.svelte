@@ -61,8 +61,8 @@
 	}
 </script>
 
-<div class="flex h-full items-center justify-center bg-main">
-	<div class="w-full max-w-xl bg-white rounded-lg p-8 line">
+<div class="min-h-full w-full flex items-center justify-center bg-main">
+	<div class="w-full max-w-xl bg-white rounded-lg p-8 line my-4 mx-8">
 		<h2 class="text-xl font-semibold text-gray-900 mb-6 text-center">회원가입</h2>
 
 		<form method="POST" on:submit|preventDefault={handleSubmit} class="space-y-8 ">
@@ -74,7 +74,7 @@
 					bind:this={usernameRef}
 					name="username"
 					bind:value={username}
-					placeholder="아이디를 입력해주세요."
+					placeholder="영문+숫자, 최소 6자"
 					required
 					type="text"
 					class="input-basic w-full h-[46px] focus:ring-color-blue-500 focus:border-color-blue-500"
@@ -92,7 +92,7 @@
 					bind:this={emailRef}
 					name="email"
 					bind:value={email}
-					placeholder="이메일 주소를 입력해주세요."
+					placeholder="example@domain.com"
 					type="email"
 					required
 					class="input-basic w-full h-[46px] focus:ring-color-blue-500 focus:border-color-blue-500"
@@ -111,7 +111,7 @@
 					type="password"
 					name="password"
 					bind:value={password}
-					placeholder="비밀번호를 입력해주세요."
+					placeholder="영문·숫자·특수문자 포함, 최소 10자"
 					required
 					class="input-basic w-full h-[46px] focus:ring-color-blue-500 focus:border-color-blue-500"
 				/>
@@ -127,7 +127,7 @@
 					id="passwordConfirm"
 					type="password"
 					bind:value={passwordConfirm}
-					placeholder="비밀번호를 다시 입력해주세요."
+					placeholder="비밀번호를 다시 입력해주세요"
 					required
 					class="input-basic w-full h-[46px] focus:ring-color-blue-500 focus:border-color-blue-500"
 				/>
@@ -138,7 +138,7 @@
 
 			<div class="text-right">
 				<button type="submit" class="color-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg text-sm px-5 py-2.5">
-					회원가입
+					가입하기
 				</button>
 			</div>
 
